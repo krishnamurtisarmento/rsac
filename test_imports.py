@@ -22,6 +22,7 @@ from __future__ import annotations
 import importlib
 import os
 import sys
+import tempfile
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 if ROOT not in sys.path:
@@ -122,6 +123,90 @@ def test_retrospective_gate_is_not_site_specific():
     )
     assert not ok("IncompleteAttempts_Aluno0111_11_08_2026-15_42_39.csv")
     assert not ok("")
+
+
+def test_source_install_paths_are_unchanged():
+    """In a source install every path must still resolve beside the application.
+
+    The writable-folder indirection exists for frozen builds. It must be
+    completely invisible to anyone running from source, which is how the tool is
+    distributed and how every existing installation works.
+    """
+    import app_paths
+
+    assert not app_paths.is_frozen(), "the test suite is not a frozen build"
+    assert os.path.normcase(app_paths.user_data_dir()) == os.path.normcase(ROOT)
+    assert os.path.normcase(app_paths.bundle_dir()) == os.path.normcase(ROOT)
+    assert app_paths.bootstrap() == app_paths.user_data_dir()
+
+    app = _load_app()
+    assert os.path.normcase(app._script_dir()) == os.path.normcase(ROOT), (
+        "_script_dir no longer points at the application folder, so an existing "
+        "installation would stop finding its own subjects.json and CSVs"
+    )
+    assert os.path.dirname(app._config_path()) == app._script_dir(), (
+        "rsac_config.json is no longer read from the folder RSAC writes to"
+    )
+
+
+def test_frozen_build_separates_writable_from_readonly():
+    """Frozen, writable files must leave the bundle and assets must stay in it.
+
+    A one-file bundle unpacks to a temporary folder that is deleted on exit, and
+    an installed one-folder bundle is not writable without elevation. Either way
+    subjects, attempt records and history cannot live beside the executable.
+    """
+    import app_paths
+
+    saved_frozen = getattr(sys, "frozen", None)
+    saved_meipass = getattr(sys, "_MEIPASS", None)
+    bundle = os.path.join(tempfile.gettempdir(), "_MEI_rsac_test")
+    try:
+        sys.frozen = True           # type: ignore[attr-defined]
+        sys._MEIPASS = bundle       # type: ignore[attr-defined]
+
+        assert app_paths.is_frozen()
+        assert os.path.normcase(app_paths.bundle_dir()) == os.path.normcase(bundle), (
+            "read-only assets must be read from the bundle"
+        )
+
+        writable = app_paths.user_data_dir()
+        assert os.path.normcase(writable) != os.path.normcase(bundle), (
+            "writable files would be placed inside the bundle, so everything the "
+            "tutor records would be lost when the application exits"
+        )
+        assert os.path.normcase(writable) != os.path.normcase(ROOT)
+        assert app_paths.APP_NAME in writable
+
+        # Assets resolve into the bundle, data resolves out of it.
+        assert app_paths.asset_path("img", "RASC_logo.jpg").startswith(bundle)
+        assert app_paths.data_path("subjects.json").startswith(writable)
+
+        # Each editable module must be seeded together with the baseline its
+        # "revert to defaults" action reads, or reverting would fail at runtime.
+        for name in app_paths.SEEDED_FILES:
+            assert os.path.isfile(os.path.join(ROOT, name)), (
+                f"{name} is listed for seeding but is not in the project"
+            )
+        for module_name in ("exercise_defs", "exercise_progression_defs",
+                            "exercise_proficiency_scores"):
+            assert f"{module_name}.py" in app_paths.SEEDED_FILES, (
+                f"{module_name} is editable through the GUI but is not seeded into "
+                f"the writable folder, so the editor would have no source to rewrite"
+            )
+            assert f"{module_name}_default.json" in app_paths.SEEDED_FILES, (
+                f"{module_name} is seeded without its defaults baseline, so "
+                f"'revert to defaults' would fail in a frozen build"
+            )
+    finally:
+        if saved_frozen is None:
+            delattr(sys, "frozen")
+        else:
+            sys.frozen = saved_frozen       # type: ignore[attr-defined]
+        if saved_meipass is None:
+            delattr(sys, "_MEIPASS")
+        else:
+            sys._MEIPASS = saved_meipass    # type: ignore[attr-defined]
 
 
 def test_exercise_defs_has_no_app_dependency():

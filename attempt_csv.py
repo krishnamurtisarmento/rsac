@@ -22,6 +22,7 @@ from __future__ import annotations
 import os
 from typing import Any
 
+import app_paths
 from exercise_proficiency_scores import (
     PROFICIENCY_BASELINES,
     calc_score,
@@ -192,6 +193,7 @@ def append_to_csv(
     direct calls; it resolves to the app's own csv_clean folder, which used to be
     a `csv_output` folder beside this module when it lived in its own package.
     """
+
     if target_path:
         csv_path = target_path
         out_dir = os.path.dirname(os.path.abspath(csv_path))
@@ -199,7 +201,7 @@ def append_to_csv(
             os.makedirs(out_dir, exist_ok=True)
     else:
         if output_dir is None:
-            output_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "csv_clean")
+            output_dir = app_paths.data_path("csv_clean")
         os.makedirs(output_dir, exist_ok=True)
 
         # Find existing CSV for this subject, or create new one

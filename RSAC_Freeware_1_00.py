@@ -9,8 +9,16 @@ import shutil
 from datetime import datetime
 from typing import Optional, Any
 
-import exercise_defs
-from exercise_defs import EXERCISE_DEFS
+# Must run before the three configuration modules are imported: in a frozen
+# build it seeds a writable folder with them and puts that folder first on
+# sys.path, so the Settings > Exercises editors still have real source to
+# rewrite. No-op in a source install. See app_paths for why this is necessary.
+import app_paths
+
+app_paths.bootstrap()
+
+import exercise_defs  # noqa: E402
+from exercise_defs import EXERCISE_DEFS  # noqa: E402
 import exercise_progression_defs
 from exercise_progression_defs import (
     CURRICULA,
@@ -167,7 +175,13 @@ CONFIG_DEFAULTS: dict[str, Any] = {
 
 
 def _script_dir() -> str:
-    return os.path.dirname(os.path.abspath(__file__))
+    """Folder RSAC reads and writes its own files in.
+
+    In a source install this is the application folder, unchanged. In a frozen
+    build it is a writable per-user folder, because the bundle itself is either
+    temporary or not writable. See app_paths.
+    """
+    return app_paths.user_data_dir()
 
 
 def _config_path() -> str:
@@ -235,8 +249,7 @@ def save_config_value(key: str, value: Any) -> None:
 # =============================================================================
 
 def show_splash_and_start_main(app):
-    script_dir = os.path.dirname(os.path.abspath(__file__))
-    logo_path = os.path.join(script_dir, "img", "RASC_logo.jpg")
+    logo_path = app_paths.asset_path("img", "RASC_logo.jpg")
 
     win_holder = {}
 
@@ -335,7 +348,7 @@ def _curriculum_svg_path(curriculum: str) -> str | None:
     filename = _CURRICULUM_SVG_FILENAMES.get(curriculum)
     if not filename:
         return None
-    path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "img", filename)
+    path = app_paths.asset_path("img", filename)
     return path if os.path.isfile(path) else None
 
 
@@ -474,7 +487,7 @@ class WelcomeDialog(QDialog):
 
         # --- Current exercise from history JSON ---
         current_exercise = "(no history yet)"
-        script_dir = os.path.dirname(os.path.abspath(__file__))
+        script_dir = _script_dir()
         hist_dir = os.path.join(script_dir, "analysis_history")
         if os.path.isdir(hist_dir):
             _pat = re.compile(
@@ -4299,7 +4312,7 @@ class MainWindow(QMainWindow):
         # Folder convention (relative to this script):
         #   ./csv_simulator : raw simulator exports (MimicSessionExport_*.csv)
         #   ./csv_clean     : cleaned files created by this tool (MimicClean_*.csv)
-        base_dir = os.path.dirname(os.path.abspath(__file__))
+        base_dir = _script_dir()
         self.simulator_dir = os.path.join(base_dir, "csv_simulator")
         self.clean_dir = os.path.join(base_dir, "csv_clean")
         self.history_dir = os.path.join(base_dir, "analysis_history")
@@ -4507,7 +4520,7 @@ class MainWindow(QMainWindow):
         )
 
     def _show_adaptive_algorithm(self, subject: str = ""):
-        img_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "img")
+        img_dir = app_paths.asset_path("img")
         curriculum = get_curriculum_for_subject(subject) if subject else ""
         if curriculum == "grad":
             img_name = "2026_Aug_a - KG - Adaptive Curricula - Grad Students - 28 exercises.jpeg"
@@ -4858,7 +4871,7 @@ class AttemptProcessor:
         """
         import json as _json
 
-        script_dir = os.path.dirname(os.path.abspath(__file__))
+        script_dir = _script_dir()
         hist_dir = os.path.join(script_dir, "analysis_history")
         if not os.path.isdir(hist_dir):
             return "pp1"
@@ -6209,7 +6222,7 @@ def _generate_retrospective_history(clean_path: str) -> str:
         raise RuntimeError("Could not determine subject from clean file.")
 
     # --- output path ---
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+    script_dir = _script_dir()
     hist_dir = os.path.join(script_dir, "analysis_history")
     os.makedirs(hist_dir, exist_ok=True)
 
@@ -8436,7 +8449,7 @@ def _history_decision_exists(subject: str, exercise_abbreviation: str, exercise_
     if not subject:
         return False
 
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+    script_dir = _script_dir()
     hist_dir = os.path.join(script_dir, "analysis_history")
     if not os.path.isdir(hist_dir):
         return False
@@ -9096,7 +9109,7 @@ def _save_live_decision_json(win, reality_check: dict[str, Any]) -> str:
     }
 
     # --- Resolve output path ---
-    script_dir = os.path.dirname(os.path.abspath(__file__))
+    script_dir = _script_dir()
     hist_dir = os.path.join(script_dir, "analysis_history")
     os.makedirs(hist_dir, exist_ok=True)
 
@@ -11127,7 +11140,7 @@ class DataShowWindow(QMainWindow):
             # Screenshot view button (last column)
             ss_file = rec.get("screenshot_file")
             if ss_file:
-                script_dir = os.path.dirname(os.path.abspath(__file__))
+                script_dir = _script_dir()
                 ss_path = os.path.join(script_dir, "analysis_screenshots", ss_file)
                 if os.path.isfile(ss_path):
                     btn = QPushButton("View")
@@ -11493,7 +11506,7 @@ class DataShowWindow(QMainWindow):
             return
 
         # Output path
-        script_dir = os.path.dirname(os.path.abspath(__file__))
+        script_dir = _script_dir()
         hist_dir = os.path.join(script_dir, "analysis_history")
         os.makedirs(hist_dir, exist_ok=True)
         out_name = f"History_{subject}_{total_lines}-att.json"

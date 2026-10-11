@@ -108,6 +108,7 @@ exercise_defs.py                Exercise catalogue and per-exercise metrics
 exercise_progression_defs.py    Curriculum graph consumed by NAED-3
 exercise_proficiency_scores.py  Proficiency baselines and score normalisation
 attempt_csv.py                  Attempt scoring and Clean CSV serialisation
+app_paths.py                    Resolves where data and assets are read/written
 curriculum_svg.py               Curriculum diagram rendering
 test_imports.py                 Test suite
 ```
