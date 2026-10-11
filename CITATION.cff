@@ -1,0 +1,35 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+title: "RSAC: Robotic Surgery Adaptive Curricula"
+abstract: >-
+  Robotic Surgery Adaptive Curricula (RSAC) is software for generating
+  individualised, adaptive training pathways in robotic surgery simulation.
+  After each recorded attempt, it evaluates data sufficiency and performance
+  trajectories relative to predefined proficiency thresholds, then recommends
+  whether the trainee should repeat the current exercise, advance through
+  standard or accelerated progression, move to an exercise of comparable
+  difficulty, or return to a simpler exercise for remediation. Exercise
+  selection follows a predefined curriculum graph that encodes progression,
+  lateral moves, and remediation pathways, while retaining proficiency
+  requirements for advancement. The distributed version accepts manually
+  entered performance metrics and provides the adaptive decision algorithm for
+  independent examination, replication, and adaptation to other simulator
+  environments.
+type: software
+authors:
+  - family-names: "Sarmento"
+    given-names: "Krishnamurti"
+    name-suffix: "Junior"
+    orcid: "https://orcid.org/0000-0002-2334-0054"
+    email: "ksj@ufrj.br"
+version: 1.0.0
+date-released: "2026-10-11"
+license: MIT
+repository-code: "https://github.com/krishnamurtisarmento/rsac"
+keywords:
+  - robotic surgery
+  - surgical simulation
+  - adaptive curriculum
+  - proficiency-based progression
+  - motor skill acquisition
+  - surgical education
