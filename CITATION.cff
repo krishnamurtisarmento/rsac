@@ -26,6 +26,11 @@ version: 1.0.0
 date-released: "2026-10-11"
 license: MIT
 repository-code: "https://github.com/krishnamurtisarmento/rsac"
+doi: 10.5281/zenodo.23299532
+identifiers:
+  - type: doi
+    value: 10.5281/zenodo.23299532
+    description: Concept DOI, always resolving to the latest version
 keywords:
   - robotic surgery
   - surgical simulation

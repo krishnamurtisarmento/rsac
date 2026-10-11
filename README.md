@@ -1,5 +1,8 @@
 # RSAC — Robotic Surgery Adaptive Curricula
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23299532.svg)](https://doi.org/10.5281/zenodo.23299532)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+
 Desktop application for running an **adaptive curriculum** on a robotic surgery
 simulator. After each attempt, RSAC scores the trainee's metrics against
 exercise-specific proficiency baselines and recommends what they should attempt
@@ -146,4 +149,11 @@ See [LICENSE](LICENSE).
 
 ## Citation
 
-<!-- TODO: add the manuscript reference once published. -->
+If you use RSAC, please cite the archived release:
+
+> Sarmento Junior, K. (2026). *RSAC: Robotic Surgery Adaptive Curricula* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.23299532
+
+GitHub's **Cite this repository** button generates this in APA or BibTeX from
+`CITATION.cff`.
+
+<!-- TODO: add the manuscript reference once the article is published. -->
