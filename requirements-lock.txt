@@ -1,0 +1,13 @@
+# Exact dependency versions this release was tested against.
+# Use this file to reproduce the tested environment:
+#     pip install -r requirements-lock.txt
+# For a more permissive install, use requirements.txt instead.
+
+PySide6==6.10.1
+QtAwesome==1.4.2
+numpy==2.4.0
+scipy==1.18.0
+pandas==3.0.5
+matplotlib==3.10.8
+openpyxl==3.1.5
+statsmodels==0.14.6

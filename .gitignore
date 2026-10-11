@@ -1,0 +1,88 @@
+# ---------------------------------------------------------------------------
+#  Participant data — MUST NOT be published
+# ---------------------------------------------------------------------------
+# Real training records from human subjects. Excluded from the repository in
+# its entirety; see README (Data) for the expected folder layout.
+csv_clean/
+csv_simulator/
+analysis_history/
+analysis_screenshots/
+subjects.json
+subject_allocation*.json
+
+# Simulator-vendor XML (redistribution status unclear)
+Flex_VR_XML/
+*.xml
+
+# ---------------------------------------------------------------------------
+#  Per-user state
+# ---------------------------------------------------------------------------
+# Site-specific folder paths. Ship rsac_config.example.json instead.
+rsac_config.json
+
+# ---------------------------------------------------------------------------
+#  Manuscript / unpublished material
+# ---------------------------------------------------------------------------
+ESM_*.docx
+*.docx
+
+# ---------------------------------------------------------------------------
+#  Internal documents (not user documentation)
+# ---------------------------------------------------------------------------
+# FREEWARE_HANDOFF.md is a development work plan. It also references the private
+# research build, the ongoing trial, and the lab's historical network setup.
+# Latest_Updates.MD is a changelog for RSAC_7_00.py, which no longer exists.
+FREEWARE_HANDOFF.md
+Latest_Updates.MD
+
+# Standalone developer tool for previewing curriculum diagrams; the application
+# itself uses curriculum_svg.py directly.
+curriculum_svg_preview_app.py
+
+# ---------------------------------------------------------------------------
+#  Development scraps (contain personal paths; safe to delete outright)
+# ---------------------------------------------------------------------------
+toast_test.py
+toast_test_auto.py
+read_excel.py
+remove_emet_ids.py
+apply_emet_ids.py
+find_emet.py
+emet_mapper.py
+prototype_mastery_v2.py
+Static.txt
+
+# ---------------------------------------------------------------------------
+#  Backups and build artefacts
+# ---------------------------------------------------------------------------
+*.bak
+*.bak-*
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.venv/
+venv/
+
+# ---------------------------------------------------------------------------
+#  Editor / OS
+# ---------------------------------------------------------------------------
+.vscode/
+.idea/
+Thumbs.db
+desktop.ini
+~$*
+
+# ---------------------------------------------------------------------------
+#  Images: only the application assets are tracked
+# ---------------------------------------------------------------------------
+# These three are loaded at runtime and the app degrades without them:
+#   RASC_logo.jpg  — splash screen, show_splash_and_start_main()
+#   the two SVGs   — Progress Graph, _CURRICULUM_SVG_FILENAMES
+# Everything else in img/ is slide decks and working figures.
+img/*
+!img/RASC_logo.jpg
+!img/2026_Aug_a - KG - Adaptive Curricula - Grad Students - 28 exercises_b.svg
+!img/2026_Aug_a - KG - Adaptive Curricula - Extended - 60 exercises.svg

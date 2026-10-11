@@ -1,0 +1,799 @@
+{
+  "grad": {
+    "label": "Grad Students",
+    "connections": {
+      "pp1": {
+        "upgrade": [
+          "pb1"
+        ],
+        "hp_upgrade": [
+          "mb1"
+        ]
+      },
+      "ppc": {
+        "upgrade": [
+          "rtt",
+          "rw2"
+        ],
+        "lateral": [
+          "mbc"
+        ]
+      },
+      "ct1": {
+        "upgrade": [
+          "ct2"
+        ]
+      },
+      "ct2": {
+        "upgrade": [
+          "pb2"
+        ],
+        "hp_upgrade": [
+          "mb2"
+        ]
+      },
+      "pb1": {
+        "upgrade": [
+          "pb2",
+          "mb2"
+        ],
+        "hp_upgrade": [
+          "ppc"
+        ],
+        "downgrade": [
+          "ct1"
+        ],
+        "lateral": [
+          "mb1"
+        ]
+      },
+      "pb2": {
+        "upgrade": [
+          "ppc",
+          "mbc"
+        ],
+        "lateral": [
+          "mb2"
+        ]
+      },
+      "mb1": {
+        "upgrade": [
+          "pb2",
+          "mb2"
+        ],
+        "hp_upgrade": [
+          "mbc"
+        ],
+        "downgrade": [
+          "ct1"
+        ],
+        "lateral": [
+          "pb1"
+        ]
+      },
+      "mb2": {
+        "upgrade": [
+          "ppc",
+          "mbc"
+        ],
+        "lateral": [
+          "pb2"
+        ]
+      },
+      "mb3": {
+        "upgrade": [
+          "rw3"
+        ],
+        "lateral": [
+          "4ac"
+        ]
+      },
+      "mbc": {
+        "upgrade": [
+          "rtt",
+          "rw2"
+        ],
+        "lateral": [
+          "ppc"
+        ]
+      },
+      "ttr": {
+        "upgrade": [
+          "rtt",
+          "rw2"
+        ]
+      },
+      "rtt": {
+        "upgrade": [
+          "mb3",
+          "4ac"
+        ],
+        "downgrade": [
+          "ttr"
+        ],
+        "lateral": [
+          "rw2"
+        ]
+      },
+      "4ac": {
+        "upgrade": [
+          "rw3"
+        ],
+        "lateral": [
+          "mb3"
+        ]
+      },
+      "rw2": {
+        "upgrade": [
+          "mb3",
+          "4ac"
+        ],
+        "downgrade": [
+          "ttr"
+        ],
+        "lateral": [
+          "rtt"
+        ]
+      },
+      "rw3": {
+        "upgrade": [
+          "ed2"
+        ]
+      },
+      "es2": {
+        "upgrade": [
+          "nt1",
+          "tr1"
+        ]
+      },
+      "ed2": {
+        "upgrade": [
+          "es2"
+        ]
+      },
+      "nt1": {
+        "upgrade": [
+          "ss1",
+          "tu1"
+        ],
+        "lateral": [
+          "tr1"
+        ]
+      },
+      "tr1": {
+        "upgrade": [
+          "ss1",
+          "tu1"
+        ],
+        "lateral": [
+          "nt1"
+        ]
+      },
+      "ss0": {
+        "upgrade": [
+          "ss1",
+          "tu1"
+        ]
+      },
+      "ss1": {
+        "upgrade": [
+          "tch",
+          "sug"
+        ],
+        "downgrade": [
+          "ss0"
+        ],
+        "lateral": [
+          "tu1"
+        ]
+      },
+      "tu1": {
+        "upgrade": [
+          "tch",
+          "sug"
+        ],
+        "downgrade": [
+          "ss0"
+        ],
+        "lateral": [
+          "ss1"
+        ]
+      },
+      "wch": {
+        "upgrade": [
+          "tch",
+          "sug"
+        ]
+      },
+      "tch": {
+        "upgrade": [
+          "kr1"
+        ],
+        "downgrade": [
+          "wch"
+        ],
+        "lateral": [
+          "sug"
+        ]
+      },
+      "sug": {
+        "upgrade": [
+          "kr1"
+        ],
+        "downgrade": [
+          "wch"
+        ],
+        "lateral": [
+          "tch"
+        ]
+      },
+      "kr1": {
+        "upgrade": [
+          "kr2"
+        ]
+      },
+      "kr2": {
+        "upgrade": [
+          "END"
+        ]
+      }
+    }
+  },
+  "resident_ext": {
+    "label": "Resident - Fellow - Extensive",
+    "connections": {
+      "pp1": {
+        "upgrade": [
+          "pb1"
+        ],
+        "hp_upgrade": [
+          "mb1"
+        ]
+      },
+      "ppc": {
+        "upgrade": [
+          "rr1",
+          "rc1",
+          "rw1"
+        ],
+        "lateral": [
+          "mbc"
+        ]
+      },
+      "ct1": {
+        "upgrade": [
+          "ct2"
+        ]
+      },
+      "ct2": {
+        "upgrade": [
+          "pb2"
+        ],
+        "hp_upgrade": [
+          "mb2"
+        ]
+      },
+      "pb1": {
+        "upgrade": [
+          "pb2"
+        ],
+        "hp_upgrade": [
+          "ppc",
+          "pb3"
+        ],
+        "downgrade": [
+          "ct1"
+        ],
+        "lateral": [
+          "mb1"
+        ]
+      },
+      "pb2": {
+        "upgrade": [
+          "pb3"
+        ],
+        "lateral": [
+          "mb2"
+        ]
+      },
+      "pb3": {
+        "upgrade": [
+          "ppc"
+        ],
+        "hp_upgrade": [
+          "mbc"
+        ],
+        "downgrade": [
+          "mb2"
+        ]
+      },
+      "30d": {
+        "upgrade": [
+          "mb3",
+          "4ac"
+        ],
+        "lateral": [
+          "ppd"
+        ]
+      },
+      "mb1": {
+        "upgrade": [
+          "mb2"
+        ],
+        "hp_upgrade": [
+          "mbc"
+        ],
+        "downgrade": [
+          "ct1"
+        ],
+        "lateral": [
+          "pb1"
+        ]
+      },
+      "mb2": {
+        "upgrade": [
+          "mbc"
+        ],
+        "lateral": [
+          "pb2"
+        ]
+      },
+      "mb3": {
+        "upgrade": [
+          "rw3"
+        ],
+        "lateral": [
+          "4ac"
+        ]
+      },
+      "mbc": {
+        "upgrade": [
+          "rr1",
+          "rc1",
+          "rw1"
+        ],
+        "lateral": [
+          "ppc"
+        ]
+      },
+      "ttr": {
+        "upgrade": [
+          "rtt",
+          "rw2"
+        ]
+      },
+      "rtt": {
+        "upgrade": [
+          "30d",
+          "sc2",
+          "ppd"
+        ],
+        "downgrade": [
+          "ttr"
+        ],
+        "lateral": [
+          "rw2"
+        ]
+      },
+      "4ac": {
+        "upgrade": [
+          "rw3"
+        ],
+        "lateral": [
+          "mb3"
+        ]
+      },
+      "rr1": {
+        "upgrade": [
+          "rc3",
+          "sc1"
+        ],
+        "lateral": [
+          "rw1"
+        ]
+      },
+      "rr2": {
+        "upgrade": [
+          "rtt",
+          "rw2"
+        ],
+        "lateral": [
+          "rc4",
+          "vop"
+        ]
+      },
+      "rc1": {
+        "upgrade": [
+          "rc3",
+          "sc1"
+        ],
+        "lateral": [
+          "rw1"
+        ]
+      },
+      "rc2": {
+        "upgrade": [
+          "rc3",
+          "sc1"
+        ]
+      },
+      "rc3": {
+        "upgrade": [
+          "rr2",
+          "rc4",
+          "vop"
+        ],
+        "downgrade": [
+          "rc2"
+        ],
+        "lateral": [
+          "sc1"
+        ]
+      },
+      "rc4": {
+        "upgrade": [
+          "rtt",
+          "rw2"
+        ],
+        "lateral": [
+          "rr2"
+        ]
+      },
+      "rw1": {
+        "upgrade": [
+          "rc3",
+          "sc1"
+        ],
+        "lateral": [
+          "rr1",
+          "rc1"
+        ]
+      },
+      "rw2": {
+        "upgrade": [
+          "30d",
+          "sc2",
+          "ppd"
+        ],
+        "downgrade": [
+          "ttr"
+        ],
+        "lateral": [
+          "rtt"
+        ]
+      },
+      "rw3": {
+        "upgrade": [
+          "ed2"
+        ]
+      },
+      "vop": {
+        "upgrade": [
+          "rtt",
+          "rw2"
+        ],
+        "lateral": [
+          "rr2"
+        ]
+      },
+      "sc1": {
+        "upgrade": [
+          "rr2",
+          "rc4",
+          "vop"
+        ],
+        "downgrade": [
+          "rc2"
+        ],
+        "lateral": [
+          "rc3"
+        ]
+      },
+      "sc2": {
+        "upgrade": [
+          "mb3",
+          "4ac"
+        ],
+        "lateral": [
+          "ppd"
+        ]
+      },
+      "ppd": {
+        "upgrade": [
+          "mb3",
+          "4ac"
+        ],
+        "lateral": [
+          "30d",
+          "sc2"
+        ]
+      },
+      "es1": {
+        "upgrade": [
+          "ech"
+        ]
+      },
+      "es2": {
+        "upgrade": [
+          "ech"
+        ],
+        "downgrade": [
+          "es1"
+        ]
+      },
+      "ech": {
+        "upgrade": [
+          "nt1",
+          "tr1"
+        ]
+      },
+      "ed2": {
+        "upgrade": [
+          "es2"
+        ]
+      },
+      "nt1": {
+        "upgrade": [
+          "ss1",
+          "tu1"
+        ],
+        "hp_upgrade": [
+          "ss2"
+        ],
+        "lateral": [
+          "tr1"
+        ]
+      },
+      "tr1": {
+        "upgrade": [
+          "ss1",
+          "tu1"
+        ],
+        "hp_upgrade": [
+          "tu2"
+        ],
+        "lateral": [
+          "nt1"
+        ]
+      },
+      "tr2": {
+        "upgrade": [
+          "ss4",
+          "tu3"
+        ],
+        "lateral": [
+          "ss3"
+        ]
+      },
+      "ss0": {
+        "upgrade": [
+          "ss1",
+          "tu1"
+        ]
+      },
+      "ss1": {
+        "upgrade": [
+          "ss2",
+          "bgd",
+          "tu2"
+        ],
+        "downgrade": [
+          "ss0"
+        ],
+        "lateral": [
+          "tu1"
+        ]
+      },
+      "ss2": {
+        "upgrade": [
+          "tr2",
+          "ss3"
+        ],
+        "hp_upgrade": [
+          "ss4"
+        ],
+        "lateral": [
+          "bgd"
+        ]
+      },
+      "ss3": {
+        "upgrade": [
+          "ss4",
+          "tu3"
+        ],
+        "lateral": [
+          "tr2"
+        ]
+      },
+      "ss4": {
+        "upgrade": [
+          "wch",
+          "wcv",
+          "rrt"
+        ],
+        "hp_upgrade": [
+          "tch"
+        ],
+        "lateral": [
+          "tu3"
+        ]
+      },
+      "bgd": {
+        "upgrade": [
+          "tr2",
+          "ss3"
+        ],
+        "hp_upgrade": [
+          "tu3"
+        ],
+        "lateral": [
+          "ss2",
+          "tu2"
+        ]
+      },
+      "tu1": {
+        "upgrade": [
+          "ss2",
+          "bgd",
+          "tu2"
+        ],
+        "downgrade": [
+          "ss0"
+        ],
+        "lateral": [
+          "ss1"
+        ]
+      },
+      "tu2": {
+        "upgrade": [
+          "tr2",
+          "ss3"
+        ],
+        "hp_upgrade": [
+          "tu3"
+        ],
+        "lateral": [
+          "bgd"
+        ]
+      },
+      "tu3": {
+        "upgrade": [
+          "wch",
+          "wcv",
+          "rrt"
+        ],
+        "hp_upgrade": [
+          "sug"
+        ],
+        "lateral": [
+          "ss4"
+        ]
+      },
+      "row": {
+        "upgrade": [
+          "wch",
+          "wcv",
+          "rrt"
+        ]
+      },
+      "wch": {
+        "upgrade": [
+          "tcv",
+          "sug"
+        ],
+        "downgrade": [
+          "row"
+        ],
+        "lateral": [
+          "wcv",
+          "rrt"
+        ]
+      },
+      "wcv": {
+        "upgrade": [
+          "tch",
+          "tcv",
+          "sug"
+        ],
+        "downgrade": [
+          "row"
+        ],
+        "lateral": [
+          "wch"
+        ]
+      },
+      "tch": {
+        "upgrade": [
+          "tah",
+          "tav"
+        ],
+        "lateral": [
+          "tcv",
+          "sug"
+        ]
+      },
+      "tcv": {
+        "upgrade": [
+          "tah",
+          "tav"
+        ],
+        "lateral": [
+          "tch",
+          "sug"
+        ]
+      },
+      "sug": {
+        "upgrade": [
+          "tah",
+          "tav"
+        ],
+        "lateral": [
+          "tch",
+          "tcv"
+        ]
+      },
+      "rrt": {
+        "upgrade": [
+          "tch",
+          "tcv",
+          "sug"
+        ],
+        "downgrade": [
+          "row"
+        ],
+        "lateral": [
+          "wch"
+        ]
+      },
+      "tah": {
+        "upgrade": [
+          "kr1"
+        ],
+        "lateral": [
+          "tav"
+        ]
+      },
+      "tav": {
+        "upgrade": [
+          "kr1"
+        ],
+        "lateral": [
+          "tah"
+        ]
+      },
+      "kr1": {
+        "upgrade": [
+          "kr2"
+        ]
+      },
+      "kr2": {
+        "upgrade": [
+          "kr3"
+        ]
+      },
+      "kr3": {
+        "upgrade": [
+          "kr4"
+        ]
+      },
+      "kr4": {
+        "upgrade": [
+          "is1"
+        ],
+        "hp_upgrade": [
+          "is2"
+        ]
+      },
+      "is1": {
+        "upgrade": [
+          "is2"
+        ]
+      },
+      "is2": {
+        "upgrade": [
+          "END"
+        ]
+      }
+    }
+  }
+}

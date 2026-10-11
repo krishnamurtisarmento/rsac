@@ -1,0 +1,14 @@
+# RSAC runtime dependencies.
+#
+# Minimum versions are given here so the application installs on a range of
+# environments. For the exact versions this release was tested against, see
+# requirements-lock.txt.
+
+PySide6>=6.5
+qtawesome>=1.4
+numpy>=1.24
+scipy>=1.11
+pandas>=2.0
+matplotlib>=3.7
+openpyxl>=3.1
+statsmodels>=0.14
