@@ -1,4 +1,4 @@
-# RSAC — Robotic Surgery Adaptive Curriculum
+# RSAC — Robotic Surgery Adaptive Curricula
 
 Desktop application for running an **adaptive curriculum** on a robotic surgery
 simulator. After each attempt, RSAC scores the trainee's metrics against
