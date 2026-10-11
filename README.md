@@ -46,10 +46,20 @@ source .venv/bin/activate
 pip install -r requirements.txt
 ```
 
-Then copy the example configuration and launch:
+Then copy the example configuration:
 
 ```bash
 cp rsac_config.example.json rsac_config.json
+```
+
+## Starting RSAC
+
+On Windows, **double-click `Start RSAC.bat`**. That is the only file you need;
+everything else is the application itself.
+
+From a terminal, on any platform:
+
+```bash
 python RSAC_Freeware_1_00.py
 ```
 
